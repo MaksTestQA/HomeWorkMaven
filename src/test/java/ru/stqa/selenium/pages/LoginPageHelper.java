@@ -90,6 +90,8 @@ public class LoginPageHelper extends PageBase {
     }
 
 
+    public boolean itIsLoginPage() {
 
-
+        return signInButton.isDisplayed();
+    }
 }

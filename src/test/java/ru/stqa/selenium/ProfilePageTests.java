@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.selenium.pages.*;
+import ru.stqa.selenium.util.DataProviders;
 
 public class ProfilePageTests extends TestsBase {
 
@@ -35,6 +36,10 @@ public class ProfilePageTests extends TestsBase {
       Assert.assertTrue(profilePage.checkingTitle());
 
   }
+
+
+
+
     @Test
     public  void profileUserGuestTest(){
       System.out.println("--------------------profileUserGuestTest is started--------------------");

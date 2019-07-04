@@ -1,6 +1,5 @@
 package ru.stqa.selenium;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -8,6 +7,7 @@ import org.testng.annotations.Test;
 import ru.stqa.selenium.pages.HomePageAuthHelper;
 import ru.stqa.selenium.pages.HomePageHelper;
 import ru.stqa.selenium.pages.LoginPageHelper;
+import ru.stqa.selenium.util.DataProviders;
 
 
 import java.awt.*;
@@ -28,22 +28,22 @@ public class LoginPageTests extends TestsBase {
 
     }
 
-    @Test
-    public void loginPositive() {
+    @Test (dataProviderClass = DataProviders.class,dataProvider = "loginPositive")
+    public void loginPositive(String login , String password) {
 
         homePage.waitUntilPageIsLoaded();
         homePage.openLoginPage();
         loginPage.waitUntilPageIsLoaded();
-        loginPage.enterLoginPassword(LOGIN, PASSWORD);
+        loginPage.enterLoginPassword(login, password);
         homePageAuth.waitUntilPageIsLoaded();
-        Assert.assertTrue(homePageAuth.profileButtonTitleContainsText(LOGIN));
+        Assert.assertTrue(homePageAuth.profileButtonTitleContainsText(login));
     }
 
-    @Test
-    public void loginNegative() throws AWTException{
+    @Test (dataProviderClass = DataProviders.class, dataProvider = "loginNegative")
+    public void loginNegative(String login, String password) throws AWTException{
 
         homePage.waitUntilPageIsLoaded().openLoginPage();
-        loginPage.waitUntilPageIsLoaded().enterLoginPassword("jjjj","syuyb87677");
+        loginPage.waitUntilPageIsLoaded().enterLoginPassword(login,password);
         if(!loginPage.wrongMessageIsDisplayed()) {
             loginPage.cancelPopUpWindow();
         }

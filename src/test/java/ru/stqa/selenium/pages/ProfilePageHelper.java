@@ -107,4 +107,5 @@ public class ProfilePageHelper extends PageBase {
         return foodsProfileData.getText();
     }
 
+
 }

@@ -1,12 +1,9 @@
 package ru.stqa.selenium;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import ru.stqa.selenium.factory.WebDriverPool;
 import ru.stqa.selenium.pages.*;
 
 public class FamilyPageTests extends TestsBase{
@@ -20,7 +17,7 @@ public class FamilyPageTests extends TestsBase{
     private MyFamilyPageHelper myFamilyPage;
 
     @BeforeMethod
-    public void initTests() throws InterruptedException {
+    public void initTests()  {
 
         homePage = PageFactory.initElements(driver,HomePageHelper.class);
         loginPage = PageFactory.initElements(driver, LoginPageHelper.class);
@@ -30,23 +27,24 @@ public class FamilyPageTests extends TestsBase{
         myFamilyPage = PageFactory.initElements(driver, MyFamilyPageHelper.class);
 
 
-
-
-
-
     }
 
 
 
 
     @Test
-    public void profileFamilyInfoTest() throws InterruptedException {
+    public void profileFamilyInfoTest() {
 
         System.out.println("--------------------profileFamilyInfoTest is started--------------------");
         homePage.waitUntilPageIsLoaded().openLoginPage();
         loginPage.waitUntilPageIsLoaded().enterLoginPassword(LOGIN,PASSWORD);
         homePageAuth.waitUntilPageIsLoaded().goToProfile();
         profilePage.waitUntilPageIsLoaded();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
         String confessionProfile = profilePage.confessionProfileData();

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 public class EditProfilePageHelper extends PageBase {
 
     @FindBy(xpath="//div[@class='centertext']")
@@ -50,6 +51,7 @@ public class EditProfilePageHelper extends PageBase {
             return String.valueOf(((JavascriptExecutor)driver).executeScript("return document.readyState")).equals("complete");
         });
     }
+
 
     public EditProfilePageHelper selectFamilyStatus() {
 

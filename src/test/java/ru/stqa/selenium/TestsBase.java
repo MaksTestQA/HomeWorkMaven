@@ -1,6 +1,7 @@
 package ru.stqa.selenium;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.URL;
 
 import org.openqa.selenium.By;
@@ -26,10 +27,12 @@ public class TestsBase {
   public static final String LOGIN = "maks";
   public static final String PASSWORD = "vfrcbv87";
   private static final String URL = "https://mishpahug.co.il/";
-  protected static  String familyStatus = "Family";
-  protected static  String guestStatus = "Guest";
-  protected static  String guestAndFamilyStatus = "Guest and Family";
-
+  protected static final String familyStatus = "Family";
+  protected static final String guestStatus = "Guest";
+  protected static final String guestAndFamilyStatus = "Guest and Family";
+  public static final String FILTER_HOLIDAY_SHABBAT ="Shabbat";
+  protected static final String FILTER_HOLIDAY_PURIM = "Purim";
+  protected static final String FILTER_CONFESSION_IRRELIGIOUS = "Irreligious";
   protected WebDriver driver;
 
 
@@ -47,8 +50,8 @@ public class TestsBase {
   @BeforeMethod
   public void initWebDriver() throws InterruptedException {
     driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
-    driver.get(baseUrl);
     driver.manage().window().maximize();
+    driver.get(baseUrl);
     Thread.sleep(2000);
     driver.findElement(By.id("closedIntro")).click();
 
